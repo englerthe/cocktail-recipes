@@ -62,13 +62,21 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
+app.use((req, res, next) => {
+  if(req.session.currentUser){
+    res.locals.currentUser = req.session.currentUser; // <== make currentUser variable available in all hbs whenever we have user in the session
+  }
+  next();
+})
 
 
-const index = require('./routes/index');
+const index = require('./routes/index'); // startpage
 app.use('/', index);
 
-const auth = require('./routes/auth-routes');
-app.use('/', auth);
+
+//const auth = require('./routes/auth-routes');
+//app.use('/', auth);
+app.use('/', require('./routes/auth-routes'));
 app.use('/', require('./routes/sec-routes'));
 
 
