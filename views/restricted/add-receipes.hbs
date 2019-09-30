@@ -1,20 +1,34 @@
-<h1>This is the rooms page</h1>
+<h1>This is the recipes page</h1>
 
-<h3>Create new room</h3>
-<form id="new-room-form" class="room-form" action="/rooms/add" method="post">
-        <div class="name">
-          <label for="name">Name: </label>
-          <input type="text" name="name">
+<h3>Create new recipe</h3>
+<form id="new-recipe-form" class="recipe-form" action="/create-recipes" method="post">
+        <div class="title">
+          <label for="title">Title: </label>
+          <input type="text" name="title">
         </div>
-        <div class="description">
+        <div class="rating">
+          <label for="rating">Rating: </label>
+          <input type="text" name="rating">
+        </div>
+        <div class="servings">
+          <label for="servings">Servings: </label>
+          <input type="number" name="servings">
+        </div>
+         <div class="ingredients">
+          <label for="ingredients">Ingredients: </label>
+          <input type="text" name="servings">
+        </div>
+        </div>
+         <div class="description">
           <label for="description">Description: </label>
           <input type="text" name="description">
         </div>
-        <div class="imageUrl">
-          <label for="imageUrl">Image-URL: </label>
+        </div>
+         <div class="imageUrl">
+          <label for="imageUrl">ImageUrl: </label>
           <input type="url" name="imageUrl">
         </div>
-        <button type="submit">Create room</button>
+        <button type="submit">Create recipe</button>
 </form><br>
 <hr>
 <h3>Edit room</h3>
