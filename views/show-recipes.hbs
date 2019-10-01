@@ -1,10 +1,13 @@
 <a href="/">Back to startpage</a>
 <hr>
-{{#each listofRooms}}
-<h3>{{this.name}}</h3>
-<a href="/rooms"> edit</a>
+{{#each listofRecipes}}
+<h3>{{this.title}}</h3>
 <ul>
+<li>{{this.rating}}</li>  
+<li>{{this.servings}}</li>
+<li>{{this.ingredients}}</li>
 <li>{{this.description}}</li>
+<li>{{this.owner}}</li>
 <li>{{this.reviews}}</li>
 <img src="{{this.imageUrl}}" alt="TestURL" width="100px">
 </ul>
