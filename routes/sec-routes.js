@@ -15,7 +15,7 @@ router.use((req, res, next) => {
 }); // ------------------------------------                                
 //     | 
 //     V
-router.get("/recipes", (req, res, next) => {
+router.get("/my-recipes", (req, res, next) => {
   res.render("restricted/add-recipes");
 });
 
@@ -32,15 +32,15 @@ router.post("/recipes/create-recipes", (req, res, next) => {
   
   if (title === "") { //check if post values are not empty
     res.render("restricted/add-recipes", { // create signup error message in signup page
-      Message: "Enter all necessary data."
+      errorMessageCreate: "Enter all necessary data."
     });
     return;
   }
-  Recipes.findOne({ "name": title }) // check if recipe exists
+  Recipes.findOne({ "title": title }) // check if recipe exists
     .then(thisRecipes => {
       if (thisRecipes !== null) {
         res.render("restricted/add-recipes", { // create signup error message in signup page
-          Message: "The recipe " + title + " already exists!"
+          errorMessageCreate: "The recipe " + title + " already exists!"
         });
         return;
       }
@@ -55,7 +55,7 @@ router.post("/recipes/create-recipes", (req, res, next) => {
       reviews: reviews
       })
         .then(() => {
-          res.render("restricted/add-recipes", { Message: "The recipe " + title + " has been created successfully!" });
+          res.render("restricted/add-recipes", { errorMessageCreate: "The recipe " + title + " has been created successfully!" });
         })
         .catch(error => {
           console.log("Create recipe failed: " + error);
@@ -66,7 +66,7 @@ router.post("/recipes/create-recipes", (req, res, next) => {
     })
 });
 
-router.post("/recipes/edit", (req, res, next) => {
+router.post("/my-recipes/edit", (req, res, next) => {
   const title = req.body.title;
   const rating = req.body.rating;
   const servings = req.body.servings;
@@ -100,7 +100,7 @@ router.post("/recipes/edit", (req, res, next) => {
     })
   });
 
-  router.post("/recipes/delete", (req, res, next) => {
+  router.post("/my-recipes/delete", (req, res, next) => {
     const title = req.body.title;
   
     if (title === "") { //check if post values are not empty

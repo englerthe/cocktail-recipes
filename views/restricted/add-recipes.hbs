@@ -29,3 +29,7 @@
         </div>
         <button type="submit">Create recipe</button>
 </form>
+<hr>
+{{#if errorMessageCreate }}
+    <p>{{ errorMessageCreate }}</p>
+  {{/if}}

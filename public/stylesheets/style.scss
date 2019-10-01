@@ -1,8 +1,30 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  background: url("/images/Drink-Menu-Background.jpg") no-repeat;
+  background-size: cover;
 }
-
+body {
+  padding: 20px;
+  font-family: 'Baloo Paaji', cursive;
+  font-size: 18px;
+  color: fuchsia;
+}
 a {
-  color: #00B7FF;
+  color: rgb(15, 200, 240);
+  margin: 0 5px;
+}
+hr {
+  border-top: 1px dotted fuchsia;
+}
+h1 {
+  text-align: center;
+  font-size: 32px;
+}
+h2 {
+  text-align: center;
+  font-size: 24px;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

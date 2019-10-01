@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const User = require("../models/user-model");
-//const Reciepes = require("../models/recipes-model");
+const Recipes = require("../models/recipes-model");
 
 const bcrypt = require("bcryptjs");
 const bcryptSalt = 10;
@@ -35,7 +35,7 @@ router.post("/signup", (req, res, next) => {
         const hashPass = bcrypt.hashSync(getPass, salt);
         User.create({
           username: getUser,
-          email: getPass,
+          email: getemail,
           password: hashPass
         })
           .then(() => {
@@ -94,17 +94,16 @@ router.get("/logout", (req, res) => { //logout option
   });
 });
 
-/*
-router.get("/main", (req, res, next) => {
-  Room.find()
-  .then(listofRooms => {
-    console.log(listofRooms);
-    res.render("auth/main", {listofRooms});
+router.get("/recipes", (req, res, next) => {
+  Recipes.find()
+  .then(listofRecipes => {
+    console.log(listofRecipes);
+    res.render("show-recipes", {listofRecipes});
   })
   .catch(error => {
     next(error);
   })
 });
-*/
+
 module.exports = router;
   
