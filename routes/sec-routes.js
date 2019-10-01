@@ -16,8 +16,27 @@ router.use((req, res, next) => {
 //     | 
 //     V
 router.get("/my-recipes", (req, res, next) => {
+  Recipes.find().populate('owner')
+  .then(recipesFromDB => {
+    recipesFromDB.forEach(oneRecipe => {
+      if(req.session.currentUser){
+        if(oneRecipe.owner.equals(req.session.currentUser._id)){
+          oneRecipe.isOwner = true;
+        }
+      }
+    })
+    res.render('my-recipes/recipe-list', {recipesFromDB})
+  })
+
+  .catch(err => next(err))
+});
+
+
+
+router.get("/add-recipes", (req, res, next) =>{
   res.render("restricted/add-recipes");
 });
+
 
 router.post("/recipes/create-recipes", (req, res, next) => {
   const title = req.body.title;
@@ -66,6 +85,10 @@ router.post("/recipes/create-recipes", (req, res, next) => {
     })
 });
 
+router.get("/edit-recipes", (req, res, next) =>{
+  res.render("restricted/edit-recipes");
+});
+
 router.post("/my-recipes/edit", (req, res, next) => {
   const title = req.body.title;
   const rating = req.body.rating;
@@ -98,6 +121,10 @@ router.post("/my-recipes/edit", (req, res, next) => {
     .catch(error => {
       next(error);
     })
+  });
+
+  router.get("/delete-recipes", (req, res, next) =>{
+    res.render("restricted/delete-recipes");
   });
 
   router.post("/my-recipes/delete", (req, res, next) => {
