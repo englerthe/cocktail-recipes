@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Celebrity = require('../models/recipes-model.js');
+const Recipes = require('../models/recipes-model.js');
 
 const dbName = 'cocktail-recipes';
 mongoose.connect(`mongodb://localhost/${dbName}`);
@@ -7,7 +7,11 @@ mongoose.connect(`mongodb://localhost/${dbName}`);
 const recipes = [
 {
   title: "Moscow Mule",
+<<<<<<< HEAD
   rating: 'simple',
+=======
+  rating: "simple",
+>>>>>>> 9990a7e0f4cc9a53da2741ce4c9f12115b7118c7
   servings: 1,
   ingredients: [
   '4 cl Wodka', 
@@ -18,7 +22,11 @@ const recipes = [
 },
 {
   title: "Hugo",
+<<<<<<< HEAD
   rating: 'simple',
+=======
+  rating: "simple",
+>>>>>>> 9990a7e0f4cc9a53da2741ce4c9f12115b7118c7
   servings: 1,
   ingredients: [
   '1 Glass Prosecco', 
@@ -33,7 +41,11 @@ const recipes = [
 },
 {
   title: "Swimmingpool",
+<<<<<<< HEAD
   rating: 'regular',
+=======
+  rating: "regular",
+>>>>>>> 9990a7e0f4cc9a53da2741ce4c9f12115b7118c7
   servings: 1,
   ingredients: [
   '1 cl Rum', 

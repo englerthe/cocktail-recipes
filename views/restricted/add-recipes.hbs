@@ -1,7 +1,7 @@
 <h1>This is the recipes page</h1>
 
 <h3>Create new recipe</h3>
-<form id="new-recipe-form" class="recipe-form" action="/create-recipes" method="post">
+<form id="new-recipe-form" class="recipe-form" action="/recipes/create-recipes" method="post">
         <div class="title">
           <label for="title">Title: </label>
           <input type="text" name="title">
@@ -16,7 +16,7 @@
         </div>
          <div class="ingredients">
           <label for="ingredients">Ingredients: </label>
-          <textarea type="text" name="ingredients" cols="10", rows="20"></textarea>
+          <input type="text" name="ingredients">
         </div>
         </div>
          <div class="description">
@@ -29,36 +29,4 @@
           <input type="url" name="imageUrl">
         </div>
         <button type="submit">Create recipe</button>
-</form><br>
-<hr>
-<h3>Edit room</h3>
-      <form id="edit-room-form" class="room-form" action="/rooms/edit" method="post">
-        <div class="name">
-          <label for="name">Name: </label>
-          <input type="text" name="name">
-        </div>
-        <div class="description">
-          <label for="description">Description: </label>
-          <input type="text" name="description">
-        </div>
-        <div class="imageUrl">
-          <label for="imageUrl">Image-URL: </label>
-          <input type="url" name="imageUrl">
-        </div>
-        <button id="send-data">Update</button>
-      </form>
-<hr>
-<h3>Delete room</h3>
-<form id="delete-room-form" class="room-form" action="/rooms/delete" method="post">
-      <div class="name">
-        <label for="name">Name: </label>
-        <input type="text" name="name">
-      </div>
-<button id="send-data">Delete</button>
 </form>
-{{#if Message}}
-<hr>
-<div>{{Message}}</div>
-{{/if}}
-<hr>
-<a href="/">Start page</a>
