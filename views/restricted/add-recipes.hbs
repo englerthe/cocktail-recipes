@@ -1,32 +1,31 @@
-<h1>This is the recipes page</h1>
+<h1>Create a new recipe</h1>
 
-<h3>Create new recipe</h3>
 <form id="new-recipe-form" class="recipe-form" action="/recipes/create-recipes" method="post">
         <div class="title">
           <label for="title">Title: </label>
-          <input type="text" name="title">
+          <input type="text" name="title" placeholder="title">
         </div>
         <div class="rating">
           <label for="rating">Rating: </label>
-          <input type="text" name="rating">
+          <input type="text" name="rating" placeholder="rating">
         </div>
         <div class="servings">
           <label for="servings">Servings: </label>
-          <input type="number" name="servings">
+          <input type="number" name="servings" placeholder="servings">
         </div>
          <div class="ingredients">
           <label for="ingredients">Ingredients: </label>
-          <input type="text" name="ingredients">
+          <textarea type="text" name="ingredients" cols="30", rows="10" placeholder="Enter Ingredients(separate by commas)"></textarea>
         </div>
         </div>
          <div class="description">
           <label for="description">Description: </label>
-          <textarea type="text" name="description" cols="30", rows="10"></textarea>
+          <textarea type="text" name="description" cols="30", rows="10" placeholder="short description"></textarea>
         </div>
         </div>
          <div class="imageUrl">
           <label for="imageUrl">ImageUrl: </label>
-          <input type="url" name="imageUrl">
+          <input type="url" name="imageUrl" placeholder="add a picture">
         </div>
         <button type="submit">Create recipe</button>
 </form>
