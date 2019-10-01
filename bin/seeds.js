@@ -7,7 +7,7 @@ mongoose.connect(`mongodb://localhost/${dbName}`);
 const recipes = [
 {
   title: "Moscow Mule",
-  rating: simple,
+  rating: 'simple',
   servings: 1,
   ingredients: [
   '4 cl Wodka', 
@@ -18,7 +18,7 @@ const recipes = [
 },
 {
   title: "Hugo",
-  rating: simple,
+  rating: 'simple',
   servings: 1,
   ingredients: [
   '1 Glass Prosecco', 
@@ -33,7 +33,7 @@ const recipes = [
 },
 {
   title: "Swimmingpool",
-  rating: regular,
+  rating: 'regular',
   servings: 1,
   ingredients: [
   '1 cl Rum', 
