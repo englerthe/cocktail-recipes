@@ -6,11 +6,12 @@ body {
   //background: url("/images/Drink-Menu-Background.jpg") no-repeat;
   background-size: cover;
   padding: 20px;
-  font-family: 'Baloo Paaji', cursive;
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
   color: white;
 }
 a {
+  font-family: 'Baloo Paaji', cursive;
   color: rgb(15, 200, 240);
   margin: 0 5px;
 }
@@ -19,6 +20,7 @@ hr {
 }
 h1 {
   text-align: center;
+  font-family: 'Baloo Paaji', cursive;
   letter-spacing: 1px;
   font-size: 40px;
   color: fuchsia;

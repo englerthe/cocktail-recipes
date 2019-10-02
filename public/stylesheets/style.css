@@ -5,11 +5,12 @@ html {
 body {
   background-size: cover;
   padding: 20px;
-  font-family: 'Baloo Paaji', cursive;
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
   color: white; }
 
 a {
+  font-family: 'Baloo Paaji', cursive;
   color: #0fc8f0;
   margin: 0 5px; }
 
@@ -18,6 +19,7 @@ hr {
 
 h1 {
   text-align: center;
+  font-family: 'Baloo Paaji', cursive;
   letter-spacing: 1px;
   font-size: 40px;
   color: fuchsia;

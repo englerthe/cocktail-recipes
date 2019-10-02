@@ -90,6 +90,7 @@ router.post("/login", (req, res, next) => {
 router.get("/logout", (req, res) => { //logout option
   req.session.destroy(err => {
     if (err) console.log(err);
+    condition = false;
     res.render("index", {Message: "Successfully logged out!"} );
   });
 });

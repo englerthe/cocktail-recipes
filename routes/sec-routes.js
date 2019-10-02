@@ -15,9 +15,12 @@ router.use((req, res, next) => {
 }); // ------------------------------------                                
 //     | 
 //     V
+let condition = false;
 
 router.get("/my-recipes", (req, res, next) =>{
-  res.render("restricted/own-recipes");
+  condition = true;
+  console.log(condition);
+  res.render("restricted/own-recipes", {condition});
 });
 
 
