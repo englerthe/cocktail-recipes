@@ -1,0 +1,56 @@
+{{#if recipe.isOwner}}
+  <button id="toggle-button">Update recipe details</button>
+
+  <form action="/edit-recipes/{{recipes._id}}/edit" method="post" id="edit-form" hidden="true" 
+  enctype='multipart/form-data'> {{!-- 🚀 enctype needs to be here if there is anything type="file" in the form --}}
+    <label for="">title</label>
+    <input type="text" name="title" id="" value="{{recipes.title}}">
+
+    <label for="">servings</label>
+    <input type="text" name="rating" id="" value="{{recipes.rating}}">
+
+    <label for="">rating</label>
+    <input type="text" name="rating" id="" value="{{recipes.servings}}">
+
+    <label for="">ingredients</label>
+    <input type="text" name="ingredients" id="" value="{{recipes.ingredients}}">
+
+    <label for="">description</label>
+    <input type="text" name="description" id="" value="{{recipes.description}}">
+
+    <label for="">Description</label>
+    <textarea name="description" id="" cols="30" rows="10"> {{recipes.description}} </textarea>
+
+    <img src="{{recipes.imageUrl}}" alt="" width="200">
+    <label for="">Upload new image</label>
+    <input type="file" name="imageUrl" id=""> {{!-- type="file" => when adding images or any other files --}}
+
+    <button type="submit">Save changes</button>
+  </form>
+{{/if}}
+
+<hr>
+{{!-- USER CAN NOT LEAVE REVIEWS ON THEIR OWN PROPERTIES --}}
+{{!-- this means that only if the user IS NOT the owner, this form will be shown --}}
+{{#unless recipe.isOwner}}
+  <h2>Add a review:</h2>
+  <form action="/my-recipes/{{recipe._id}}/add-review" method="POST">
+    <textarea name="comment" id="" cols="10" rows="5"></textarea>
+    <button type="submit">Add</button>
+  </form>
+{{/unless}}
+
+
+{{!-- if there are reviews, show them, if not, forget about it 🙃 --}}
+{{#if recipe.reviews}}
+  <h3>Reviews:</h3>
+  {{#each recipe.reviews}}
+    <p> <b>{{ this.user.username }} said: </b> {{ this.comment }}  </p>
+    {{#if this.canBeChanged}}
+      <a href="/reviews/{{this._id}}">Edit</a>
+      <form action="/reviews/{{this._id}}" method="POST">
+        <button type="submit"> Delete </button>
+      </form>
+    {{/if}}
+  {{/each}}
+{{/if}}
