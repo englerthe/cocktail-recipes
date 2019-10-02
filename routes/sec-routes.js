@@ -85,17 +85,24 @@ router.post("/recipes/create-recipes", (req, res, next) => {
     })
 });
 
-router.get("/edit-recipes", (req, res, next) =>{
-  res.render("restricted/edit-recipes");
+router.post("/edit/:id/recipes", (req, res, next) =>{
+  Recipes.findById(req.params.id)
+  .then(cocktail =>{
+    res.render("restricted/edit-recipes", {cocktail: cocktail});
+  })
+  .catch(error => {
+    next(error);
+  })
 });
 
-router.post("/my-recipes/edit", (req, res, next) => {
+router.post("/edit-recipes/:id/edit", (req, res, next) => {
   const title = req.body.title;
   const rating = req.body.rating;
   const servings = req.body.servings;
   const ingredients = req.body.ingredients;
   const description = req.body.description;
   const imageUrl = req.body.imageUrl;
+  const owner = req.session.currentUser._id;
   const reviews = req.body.reviews;
 
   if (title === "") { //check if post values are not empty
@@ -104,35 +111,40 @@ router.post("/my-recipes/edit", (req, res, next) => {
     });
     return;
   }
-  Recipes.findOne({ title: title })
+  Recipes.findById(req.params.id)
     .then(thisRecipes => {
-      if (req.session.currentUser._id.equals(thisRecipes.owner)) {
-        Recipes.update({ _id: thisRecipes._id }, { $set: { title, rating, servings, ingredients, description, imageUrl, reviews } })
+        Recipes.update({ _id: thisRecipes._id }, { $set: { title, rating, servings, ingredients, description, imageUrl, owner, reviews } })
         .then(() => {
           res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has been edited successfully!" })
         })
         .catch(error => {
           next(error);
         })
-      } else {
-        res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has not been edited!" })
-      }  // end if
     })
     .catch(error => {
       next(error);
     })
   });
 
-  router.get("/delete-recipes", (req, res, next) =>{
-    res.render("restricted/delete-recipes");
-  });
 
+
+  router.post("/delete/:id/recipes", (req, res, next) =>{
+    Recipes.findById(req.params.id)
+    .then(cocktail =>{
+      res.render("restricted/delete-recipes", {cocktail: cocktail});
+    })
+    .catch(error => {
+      next(error);
+    })
+  });
+  
   router.post('/recipes/:id/delete', (req, res, next) => {
-    Room.findByIdAndDelete(req.params.id)
+   Recipes.findByIdAndDelete(req.params.id)
     .then(() => {
       res.redirect('/my-recipes');
     })
     .catch(err => next(err));
+    
   })
 
 
