@@ -16,8 +16,20 @@ router.use((req, res, next) => {
 //     | 
 //     V
 
+/*
 router.get("/my-recipes", (req, res, next) =>{
   res.render("restricted/own-recipes");
+});
+*/
+
+router.get("/my-recipes", (req, res, next) => {
+  Recipes.find({})
+  .populate('owner')
+  .then(responseFromDB => {
+    console.log(responseFromDB);
+    res.render("restricted/own-recipes", { recipes: responseFromDB });
+  })
+  .catch(error => console.log(error));
 });
 
 
@@ -87,7 +99,7 @@ router.post("/my-recipes/edit", (req, res, next) => {
   const reviews = req.body.reviews;
 
   if (title === "") { //check if post values are not empty
-    res.render("restricted/add-recipes", {
+    res.render("restricted/edit-recipes", {
       Message: "Enter all necessary data."
     });
     return;
@@ -97,13 +109,13 @@ router.post("/my-recipes/edit", (req, res, next) => {
       if (req.session.currentUser._id.equals(thisRecipes.owner)) {
         Recipes.update({ _id: thisRecipes._id }, { $set: { title, rating, servings, ingredients, description, imageUrl, reviews } })
         .then(() => {
-          res.render("restricted/add-recipes", { Message: "The recipe " + title + " has been edited successfully!" })
+          res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has been edited successfully!" })
         })
         .catch(error => {
           next(error);
         })
       } else {
-        res.render("restricted/add-recipes", { Message: "The recipe " + title + " has not been edited!" })
+        res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has not been edited!" })
       }  // end if
     })
     .catch(error => {
