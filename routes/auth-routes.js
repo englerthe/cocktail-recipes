@@ -6,8 +6,6 @@ const Recipes = require("../models/recipes-model");
 const bcrypt = require("bcryptjs");
 const bcryptSalt = 10;
 
-
-
 router.get("/signup", (req, res, next) => {
     res.render("auth/signup");
 });
@@ -19,7 +17,7 @@ router.post("/signup", (req, res, next) => {
     
     if (getUser === "" || getPass === "" || getemail === "") { //check if post values are not empty
       res.render("auth/signup", { // create signup error message in signup page
-        errorMessageSignup: "Please enter all necessary fields to sign in." 
+        errorMessageSignup: "Please enter all necessary fields to sign in."
       });
       return;
     }
@@ -69,7 +67,7 @@ router.post("/login", (req, res, next) => {
     .then(user => {
         if (!user) { // if user does not exist
           res.render("auth/login", { // create login error message in login page
-            errorMessageLogin: "The entered username doesn't exist." 
+            errorMessageLogin: "The entered username doesn't exist."
           });
           return;
         }
@@ -107,4 +105,3 @@ router.get("/recipes", (req, res, next) => {
 });
 
 module.exports = router;
-  

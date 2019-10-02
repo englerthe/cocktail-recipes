@@ -1,10 +1,9 @@
 <hr>
-<div class="navbar">
   {{> navbar}}
-</div>
 <hr>
 <h2>Signup</h2>
 
+<div id="signup-form"></div>
 <form id="form" action="/signup" method="POST">
   <label for="username">Username</label>
   <input type="text" name="username" placeholder="Username"><br>
@@ -17,6 +16,7 @@
 
   <button type="submit">Create account</button>
 </form>
+</div>
 {{#if errorMessageSignup}}
 <a>{{ errorMessageSignup }}</a>
 {{/if}}

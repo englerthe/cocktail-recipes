@@ -6,6 +6,7 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
+let condition = false;
 router.use((req, res, next) => {
   if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
     next(); // ==> go to the next route ---
@@ -15,29 +16,20 @@ router.use((req, res, next) => {
 }); // ------------------------------------                                
 //     | 
 //     V
-let condition = false;
-
-/*
-router.get("/my-recipes", (req, res, next) =>{
-  condition = true;
-  console.log(condition);
-  res.render("restricted/own-recipes", {condition});
-});
-*/
-
+condition = true;
 router.get("/my-recipes", (req, res, next) => {
   Recipes.find({})
   .populate('owner')
   .then(responseFromDB => {
     console.log(responseFromDB);
-    res.render("restricted/own-recipes", { recipes: responseFromDB });
+    res.render("restricted/own-recipes", { recipes: responseFromDB, condition});
   })
   .catch(error => console.log(error));
 });
 
 
 router.get("/add-recipes", (req, res, next) =>{
-  res.render("restricted/add-recipes");
+  res.render("restricted/add-recipes", {condition});
 });
 
 
@@ -53,16 +45,16 @@ router.post("/recipes/create-recipes", (req, res, next) => {
   console.log(title, rating, servings, ingredients, description, imageUrl, owner, reviews);
   
   if (title === "") { //check if post values are not empty
-    res.render("restricted/add-recipes", { // create signup error message in signup page
-      errorMessageCreate: "Enter all necessary data."
+    res.render("restricted/add-recipes", { // create error message in create page
+      errorMessageCreate: "Enter all necessary data.", condition
     });
     return;
   }
   Recipes.findOne({ "title": title }) // check if recipe exists
     .then(thisRecipes => {
       if (thisRecipes !== null) {
-        res.render("restricted/add-recipes", { // create signup error message in signup page
-          errorMessageCreate: "The recipe " + title + " already exists!"
+        res.render("restricted/add-recipes", { // create error message in create page
+          errorMessageCreate: "The recipe " + title + " already exists!", condition
         });
         return;
       }
@@ -77,7 +69,8 @@ router.post("/recipes/create-recipes", (req, res, next) => {
       reviews: reviews
       })
         .then(() => {
-          res.render("restricted/add-recipes", { errorMessageCreate: "The recipe " + title + " has been created successfully!" });
+          condition = true;
+          res.render("restricted/add-recipes", { errorMessageCreate: "The recipe " + title + " has been created successfully!", condition});
         })
         .catch(error => {
           console.log("Create recipe failed: " + error);
@@ -89,7 +82,8 @@ router.post("/recipes/create-recipes", (req, res, next) => {
 });
 
 router.get("/edit-recipes", (req, res, next) =>{
-  res.render("restricted/edit-recipes");
+  condition = true;
+  res.render("restricted/edit-recipes", {condition});
 });
 
 router.post("/my-recipes/edit", (req, res, next) => {
@@ -103,7 +97,7 @@ router.post("/my-recipes/edit", (req, res, next) => {
 
   if (title === "") { //check if post values are not empty
     res.render("restricted/edit-recipes", {
-      Message: "Enter all necessary data."
+      Message: "Enter all necessary data.", condition
     });
     return;
   }
@@ -112,13 +106,13 @@ router.post("/my-recipes/edit", (req, res, next) => {
       if (req.session.currentUser._id.equals(thisRecipes.owner)) {
         Recipes.update({ _id: thisRecipes._id }, { $set: { title, rating, servings, ingredients, description, imageUrl, reviews } })
         .then(() => {
-          res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has been edited successfully!" })
+          res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has been edited successfully!", condition })
         })
         .catch(error => {
           next(error);
         })
       } else {
-        res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has not been edited!" })
+        res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has not been edited!", condition })
       }  // end if
     })
     .catch(error => {
@@ -127,7 +121,7 @@ router.post("/my-recipes/edit", (req, res, next) => {
   });
 
   router.get("/delete-recipes", (req, res, next) =>{
-    res.render("restricted/delete-recipes");
+    res.render("restricted/delete-recipes", {condition});
   });
 
   router.post('/recipes/:id/delete', (req, res, next) => {

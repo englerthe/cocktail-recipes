@@ -12,7 +12,11 @@ body {
 a {
   font-family: 'Baloo Paaji', cursive;
   color: #0fc8f0;
-  margin: 0 5px; }
+  margin: 0 5px;
+  text-decoration: none; }
+
+a:hover, a:active {
+  color: #05a0c3; }
 
 hr {
   border-top: 1px dotted fuchsia; }
@@ -30,13 +34,11 @@ h2 {
   font-size: 24px;
   letter-spacing: 1px; }
 
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center; }
-
 p {
   color: white; }
+
+ul {
+  list-style-type: none; }
 
 li {
   color: white; }
@@ -47,6 +49,22 @@ li {
   justify-content: start;
   flex-wrap: wrap; }
 
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%; }
+
+.nav-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; }
+
+.nav-res {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end; }
+
 #show-coctails {
   background: rgba(0, 0, 0, 0.6);
   min-width: 400px;
@@ -55,5 +73,19 @@ li {
   margin: 10px 10px;
   border-radius: 20px;
   box-shadow: 2px 2px 4px 2px #0fc8f0; }
+
+form {
+  background: rgba(0, 0, 0, 0.6);
+  min-width: 400px;
+  max-width: 600px;
+  padding: 10px;
+  margin: 10px 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 2px #0fc8f0; }
+
+#signup-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start; }
 
 /*# sourceMappingURL=style.css.map */
