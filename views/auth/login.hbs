@@ -1,3 +1,6 @@
+<hr>
+  {{> navbar}}
+<hr>
 <h2>Login</h2>
 {{#if Message }}
     <p>{{ Message }}</p>
@@ -6,7 +9,6 @@
 <form action="/login" method="POST">
   <label for="username ">Username</label>
   <input type="text" name="username">
-
   <label for="password">Password</label>
   <input type="password" name="password">
 

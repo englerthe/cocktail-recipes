@@ -6,19 +6,26 @@ body {
   //background: url("/images/Drink-Menu-Background.jpg") no-repeat;
   background-size: cover;
   padding: 20px;
-  font-family: 'Baloo Paaji', cursive;
+  font-family: 'Nunito', sans-serif;
   font-size: 18px;
   color: white;
 }
 a {
+  font-family: 'Baloo Paaji', cursive;
   color: rgb(15, 200, 240);
   margin: 0 5px;
+  text-decoration: none;
 }
+a:hover, a:active {
+  color: rgb(5, 160, 195)
+}
+
 hr {
   border-top: 1px dotted fuchsia;
 }
 h1 {
   text-align: center;
+  font-family: 'Baloo Paaji', cursive;
   letter-spacing: 1px;
   font-size: 40px;
   color: fuchsia;
@@ -29,13 +36,13 @@ h2 {
   font-size: 24px;
   letter-spacing: 1px;
 }
-nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+
 p {
   color: white;
+}
+
+ul {
+  list-style-type: none;
 }
 
 li {
@@ -48,6 +55,25 @@ li {
   justify-content: start;
   flex-wrap: wrap;
 }
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.nav-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.nav-res {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
 #show-coctails {
   background: rgba(0, 0, 0, 0.6);
   min-width:400px;
@@ -56,4 +82,18 @@ li {
   margin:10px 10px;
   border-radius: 20px;
   box-shadow: 2px 2px 4px 2px rgb(15, 200, 240);
+}
+form {
+  background: rgba(0, 0, 0, 0.6);
+  min-width:400px;
+  max-width:600px;
+  padding:10px;
+  margin:10px 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 2px rgb(15, 200, 240);
+}
+#signup-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
