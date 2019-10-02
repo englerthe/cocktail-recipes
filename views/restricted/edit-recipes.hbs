@@ -3,32 +3,22 @@
 <hr>
 <h1>Here you can edit your recipe</h1>
 <h3>Edit your recipe</h3>
-<form id="edit-recipe-form" class="recipe-form" action="/edit-recipes" method="post">
-        <div class="title">
-          <label for="title">Title: </label>
-          <input type="text" name="title">
-        </div>
-        <div class="rating">
-          <label for="rating">Rating: </label>
-          <input type="text" name="rating">
-        </div>
-        <div class="servings">
-          <label for="servings">Servings: </label>
-          <input type="number" name="servings">
-        </div>
-         <div class="ingredients">
-          <label for="ingredients">Ingredients: </label>
-          <textarea type="text" name="ingredients" cols="10", rows="20"></textarea>
-        </div>
-        </div>
-         <div class="description">
-          <label for="description">Description: </label>
-          <textarea type="text" name="description" cols="30", rows="10"></textarea>
-        </div>
-        </div>
-         <div class="imageUrl">
-          <label for="imageUrl">ImageUrl: </label>
-          <input type="url" name="imageUrl">
-        </div>
-        <button type="submit">Edit recipe</button>
-</form>
+<form action="/edit-recipes/{{cocktail._id}}/edit" method="post">
+    <label for="">title</label>
+    <input type="text" name="title" id="" value="{{cocktail.title}}">
+
+    <label for="">servings</label>
+    <input type="text" name="servings" id="" value="{{cocktail.servings}}">
+
+    <label for="">rating</label>
+    <input type="text" name="rating" id="" value="{{cocktail.rating}}">
+
+    <label for="">ingredients</label>
+    <textarea name="ingredients" id="" cols="30" rows="10">{{cocktail.ingredients}}</textarea>
+
+    <label for="">Description</label>
+    <textarea name="description" id="" cols="30" rows="10"> {{cocktail.description}} </textarea>
+
+
+    <button type="submit">Save changes</button>
+  </form>

@@ -9,10 +9,15 @@
 <h3>Title:</h3>
 <p> {{ this.title }}</p>
 <hr>
-<a class="" href="/edit-recipes"><button>Edit your own Recipe</button></a>
-<a class="" href="/delete-recipes"><button>Delete your Recipe</button></a>
+<form action="/edit/{{this.id}}/recipes" method="POST">
+<button type="submit">Edit your own Recipe</button></a>
+</form>
+<form action="/delete/{{this._id}}/recipes" method="POST">
+<button type="submit">Delete your Recipe</button>
+</form>
       {{/each}}
 </div>
 <br>
 <br>
        <a class="" href="/add-recipes">Create a new Recipe</a>
+
