@@ -3,10 +3,11 @@ html {
   background-size: cover; }
 
 body {
+  background-size: cover;
   padding: 20px;
   font-family: 'Baloo Paaji', cursive;
   font-size: 18px;
-  color: fuchsia; }
+  color: white; }
 
 a {
   color: #0fc8f0;
@@ -17,15 +18,40 @@ hr {
 
 h1 {
   text-align: center;
-  font-size: 32px; }
+  letter-spacing: 1px;
+  font-size: 40px;
+  color: fuchsia;
+  text-shadow: 0 0 0.2em white, 0 0 0.2em white, 0 0 0.5em #0fc8f0; }
 
 h2 {
   text-align: center;
-  font-size: 24px; }
+  font-size: 24px;
+  letter-spacing: 1px; }
 
 nav {
   display: flex;
   flex-direction: row;
   justify-content: center; }
+
+p {
+  color: white; }
+
+li {
+  color: white; }
+
+.list-cocktails {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  flex-wrap: wrap; }
+
+#show-coctails {
+  background: rgba(0, 0, 0, 0.6);
+  min-width: 400px;
+  max-width: 400px;
+  padding: 10px;
+  margin: 10px 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 2px #0fc8f0; }
 
 /*# sourceMappingURL=style.css.map */

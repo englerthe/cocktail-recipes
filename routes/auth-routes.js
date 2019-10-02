@@ -90,12 +90,12 @@ router.post("/login", (req, res, next) => {
 router.get("/logout", (req, res) => { //logout option
   req.session.destroy(err => {
     if (err) console.log(err);
-    res.redirect("/");
+    res.render("index", {Message: "Successfully logged out!"} );
   });
 });
 
 router.get("/recipes", (req, res, next) => {
-  Recipes.find()
+  Recipes.find().populate('owner')
   .then(listofRecipes => {
     console.log(listofRecipes);
     res.render("show-recipes", {listofRecipes});

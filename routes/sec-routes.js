@@ -10,7 +10,7 @@ router.use((req, res, next) => {
   if (req.session.currentUser) { // <== if there's user in the session (user is logged in)
     next(); // ==> go to the next route ---
   } else {                          //    |
-    res.redirect("/login");         //    |
+    res.render("auth/login" , {Message: "You have to log in to access your personal recipe page."});         //    |
   }                                 //    |
 }); // ------------------------------------                                
 //     | 

@@ -1,14 +1,17 @@
-<a href="/">Back to startpage</a>
-<hr>
+<div class="list-cocktails">
 {{#each listofRecipes}}
-<h3>{{this.title}}</h3>
-<ul>
-<li>{{this.rating}}</li>  
-<li>{{this.servings}}</li>
-<li>{{this.ingredients}}</li>
-<li>{{this.description}}</li>
-<li>{{this.owner}}</li>
-<li>{{this.reviews}}</li>
-<img src="{{this.imageUrl}}" alt="TestURL" width="100px">
-</ul>
+  <div id="show-coctails">
+  <h3>Cocktail: {{this.title}}</h3>
+  <ul>
+    <li>Rating: {{this.rating}}</li>
+    <li>Servings: {{this.servings}}</li>
+    <li>Incridents: {{this.ingredients}}</li>
+    <li>How to mix it: {{this.description}}</li>
+    <li>Creator: {{this.owner.username}}</li>
+    <li>Reviews: {{this.reviews}}</li>
+    <img src="{{this.imageUrl}}" alt="TestURL" width="100px">
+  </ul>
+  </div>
 {{/each}}
+</div>
+<a href="/">Back to startpage</a>
