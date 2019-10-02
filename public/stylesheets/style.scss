@@ -3,9 +3,8 @@ html {
   background-size: cover;
 }
 body {
-  //background: url("/images/Drink-Menu-Background.jpg") no-repeat;
   background-size: cover;
-  padding: 20px;
+  padding: 10px 30px;
   font-family: 'Nunito', sans-serif;
   font-size: 18px;
   color: white;
@@ -31,8 +30,11 @@ h1 {
   color: fuchsia;
   text-shadow: 0 0 0.2em white, 0 0 0.2em white, 0 0 0.5em rgb(15, 200, 240);
 }
+.err {
+  color: red;
+}
 h2 {
-  text-align: center;
+  text-align: left;
   font-size: 24px;
   letter-spacing: 1px;
 }
@@ -61,6 +63,7 @@ nav {
   flex-direction: row;
   justify-content: space-between;
   width: 60%;
+  align-items: center;
 }
 
 .nav-main {
@@ -92,6 +95,10 @@ form {
   border-radius: 20px;
   box-shadow: 2px 2px 4px 2px rgb(15, 200, 240);
 }
+.recipe-form {
+  max-width:1000px;
+}
+
 #signup-form {
   display: flex;
   flex-direction: row;

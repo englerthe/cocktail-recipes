@@ -2,6 +2,20 @@
   {{> navbar}}
 <hr>
 <h2>Home</h2>
+{{#each listofRecipes}}
+  <div id="show-coctails">
+  <h3>Cocktail: {{this.title}}</h3>
+  <ul>
+    <li>Rating: {{this.rating}}</li>
+    <li>Servings: {{this.servings}}</li>
+    <li>Incridents: {{this.ingredients}}</li>
+    <li>How to mix it: {{this.description}}</li>
+    <li>Creator: {{this.owner.username}}</li>
+    <li>Reviews: {{this.reviews}}</li>
+    <img src="{{this.imageUrl}}" alt="there should be an image here :-)" width="150px">
+  </ul>
+  </div>
+{{/each}}
 {{#if Message }}
     <p>{{ Message }}</p>
 {{/if}}

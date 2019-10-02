@@ -1,7 +1,7 @@
 <hr>
   {{> navbar}}
 <hr>
-
+<h2>List of all cocktails</h2>
 <div class="list-cocktails">
 {{#each listofRecipes}}
   <div id="show-coctails">
@@ -13,7 +13,7 @@
     <li>How to mix it: {{this.description}}</li>
     <li>Creator: {{this.owner.username}}</li>
     <li>Reviews: {{this.reviews}}</li>
-    <img src="{{this.imageUrl}}" alt="TestURL" width="100px">
+    <img src="{{this.imageUrl}}" alt="there should be an image here :-)" width="150px">
   </ul>
   </div>
 {{/each}}

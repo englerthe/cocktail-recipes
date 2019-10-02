@@ -96,8 +96,18 @@ router.get("/logout", (req, res) => { //logout option
 router.get("/recipes", (req, res, next) => {
   Recipes.find().populate('owner')
   .then(listofRecipes => {
-    console.log(listofRecipes);
     res.render("show-recipes", {listofRecipes});
+  })
+  .catch(error => {
+    next(error);
+  })
+});
+
+router.get("/search-recipes/" , (req, res, next) => {
+  Recipes.find(req.query)
+  .then(listofRecipes => {
+    console.log(listofRecipes);
+    res.render("index", {listofRecipes});
   })
   .catch(error => {
     next(error);
