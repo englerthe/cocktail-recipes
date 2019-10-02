@@ -15,22 +15,10 @@ router.use((req, res, next) => {
 }); // ------------------------------------                                
 //     | 
 //     V
-router.get("/my-recipes", (req, res, next) => {
-  Recipes.find().populate('owner')
-  .then(recipesFromDB => {
-    recipesFromDB.forEach(oneRecipe => {
-      if(req.session.currentUser){
-        if(oneRecipe.owner.equals(req.session.currentUser._id)){
-          oneRecipe.isOwner = true;
-        }
-      }
-    })
-    res.render('my-recipes/recipe-list', {recipesFromDB})
-  })
 
-  .catch(err => next(err))
+router.get("/my-recipes", (req, res, next) =>{
+  res.render("restricted/own-recipes");
 });
-
 
 
 router.get("/add-recipes", (req, res, next) =>{
@@ -127,6 +115,16 @@ router.post("/my-recipes/edit", (req, res, next) => {
     res.render("restricted/delete-recipes");
   });
 
+  router.post('/recipes/:id/delete', (req, res, next) => {
+    Room.findByIdAndDelete(req.params.id)
+    .then(() => {
+      res.redirect('/my-recipes');
+    })
+    .catch(err => next(err));
+  })
+
+
+/*
   router.post("/my-recipes/delete", (req, res, next) => {
     const title = req.body.title;
   
@@ -154,5 +152,5 @@ router.post("/my-recipes/edit", (req, res, next) => {
         next(error);
       })
   });
-
+*/
   module.exports = router;
