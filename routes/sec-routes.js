@@ -146,6 +146,18 @@ router.post("/edit-recipes/:id/edit", (req, res, next) => {
     
   })
 
+  router.post("/comment/:id", (req, res, next) =>{
+    Recipes.findById(req.params.id)
+    .then(responseFromDB => {
+      res.render("restricted/review", {comment: responseFromDB, condition})
+    })
+    .catch(error =>{
+      next(error);
+    })
+  });
+    
+ 
+    
 
 /*
   router.post("/my-recipes/delete", (req, res, next) => {

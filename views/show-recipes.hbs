@@ -14,6 +14,10 @@
     <li>Creator: {{this.owner.username}}</li>
     <li>Reviews: {{this.reviews}}</li>
     <img src="{{this.imageUrl}}" alt="TestURL" width="100px">
+
+    <form action="/comment/{{this._id}}" method="POST">
+    <button type="submit">Comment this cocktail</button>
+    </form>
   </ul>
   </div>
 {{/each}}

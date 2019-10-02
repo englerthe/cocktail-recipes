@@ -1,4 +1,4 @@
-{{#if recipe.isOwner}}
+{{#if recipes.0.owner.username}}
   <button id="toggle-button">Update recipe details</button>
 
   <form action="/edit-recipes/{{recipes._id}}/edit" method="post" id="edit-form" hidden="true" 
@@ -32,9 +32,9 @@
 <hr>
 {{!-- USER CAN NOT LEAVE REVIEWS ON THEIR OWN PROPERTIES --}}
 {{!-- this means that only if the user IS NOT the owner, this form will be shown --}}
-{{#unless recipe.isOwner}}
+{{#unless recipes.0.owner.username}}
   <h2>Add a review:</h2>
-  <form action="/my-recipes/{{recipe._id}}/add-review" method="POST">
+  <form action="/my-recipes/{{recipes._id}}/add-review" method="POST">
     <textarea name="comment" id="" cols="10" rows="5"></textarea>
     <button type="submit">Add</button>
   </form>
@@ -42,9 +42,9 @@
 
 
 {{!-- if there are reviews, show them, if not, forget about it 🙃 --}}
-{{#if recipe.reviews}}
+{{#if recipes.reviews}}
   <h3>Reviews:</h3>
-  {{#each recipe.reviews}}
+  {{#each recipes.reviews}}
     <p> <b>{{ this.user.username }} said: </b> {{ this.comment }}  </p>
     {{#if this.canBeChanged}}
       <a href="/reviews/{{this._id}}">Edit</a>
