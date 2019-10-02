@@ -23,7 +23,7 @@ router.get("/my-recipes", (req, res, next) =>{
 */
 
 router.get("/my-recipes", (req, res, next) => {
-  Recipes.find({})
+  Recipes.find()
   .populate('owner')
   .then(responseFromDB => {
     console.log(responseFromDB);
