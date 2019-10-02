@@ -17,16 +17,22 @@ router.use((req, res, next) => {
 //     | 
 //     V
 condition = true;
+
 router.get("/my-recipes", (req, res, next) => {
-  Recipes.find({})
-  .populate('owner')
+  Recipes.find().populate('owner')
   .then(responseFromDB => {
-    console.log(responseFromDB);
-    res.render("restricted/own-recipes", { recipes: responseFromDB, condition});
+    let myRecipes = [];
+    responseFromDB.forEach(everyRecipe => {
+      if(req.session.currentUser){
+        if(everyRecipe.owner._id.equals(req.session.currentUser._id)){
+          myRecipes.push(everyRecipe);
+        }
+      }
+    })
+    res.render("restricted/own-recipes", {recipes: myRecipes, condition});
   })
   .catch(error => console.log(error));
 });
-
 
 router.get("/add-recipes", (req, res, next) =>{
   res.render("restricted/add-recipes", {condition});
@@ -84,7 +90,7 @@ router.post("/recipes/create-recipes", (req, res, next) => {
 router.post("/edit/:id/recipes", (req, res, next) =>{
   Recipes.findById(req.params.id)
   .then(cocktail =>{
-    res.render("restricted/edit-recipes", {cocktail: cocktail});
+    res.render("restricted/edit-recipes", {cocktail: cocktail, condition});
   })
   .catch(error => {
     next(error);
@@ -102,7 +108,7 @@ router.post("/edit-recipes/:id/edit", (req, res, next) => {
   const reviews = req.body.reviews;
   if (title === "") { //check if post values are not empty
     res.render("restricted/edit-recipes", {
-      Message: "Enter all necessary data."
+      Message: "Enter all necessary data.", condition
     });
     return;
   }
@@ -110,7 +116,7 @@ router.post("/edit-recipes/:id/edit", (req, res, next) => {
     .then(thisRecipes => {
         Recipes.update({ _id: thisRecipes._id }, { $set: { title, rating, servings, ingredients, description, imageUrl, owner, reviews } })
         .then(() => {
-          res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has been edited successfully!" })
+          res.render("restricted/edit-recipes", { Message: "The recipe " + title + " has been edited successfully!", condition })
         })
         .catch(error => {
           next(error);
@@ -124,7 +130,7 @@ router.post("/edit-recipes/:id/edit", (req, res, next) => {
   router.post("/delete/:id/recipes", (req, res, next) =>{
     Recipes.findById(req.params.id)
     .then(cocktail =>{
-      res.render("restricted/delete-recipes", {cocktail: cocktail});
+      res.render("restricted/delete-recipes", {cocktail: cocktail, condition});
     })
     .catch(error => {
       next(error);
