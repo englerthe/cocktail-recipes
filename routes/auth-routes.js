@@ -104,10 +104,25 @@ router.get("/recipes", (req, res, next) => {
 });
 
 router.get("/search-recipes/" , (req, res, next) => {
-  Recipes.find(req.query)
+  Recipes.find()
   .then(listofRecipes => {
-    console.log(listofRecipes);
-    res.render("index", {listofRecipes});
+    let searchStr = req.query.title.toLowerCase();
+    console.log(searchStr);
+    let allRecipesTitle = [];
+    for (let i=0;i < listofRecipes.length; i++){
+      if (listofRecipes[i].title.toLowerCase().indexOf(searchStr) != -1) {
+      allRecipesTitle.push(listofRecipes[i].title);
+      }
+    }
+    if (allRecipesTitle.length > 0) {
+      Recipes.find().populate('owner').where('title').in(allRecipesTitle)
+      .then(listofFoundRecipes => {
+      res.render("index", {listofFoundRecipes});
+      })
+    }
+    else {     
+      res.render("index", { Message: "No recipe found with this name ;-(" } );
+    }
   })
   .catch(error => {
     next(error);

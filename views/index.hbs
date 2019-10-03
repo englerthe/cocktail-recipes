@@ -2,7 +2,7 @@
   {{> navbar}}
 <hr>
 <h2>Home</h2>
-{{#each listofRecipes}}
+{{#each listofFoundRecipes}}
   <div id="show-coctails">
   <h3>Cocktail: {{this.title}}</h3>
   <ul>
@@ -17,5 +17,5 @@
   </div>
 {{/each}}
 {{#if Message }}
-    <p>{{ Message }}</p>
+    <h2>{{ Message }}</h2>
 {{/if}}
