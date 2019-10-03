@@ -47,10 +47,6 @@ ul {
   list-style-type: none;
 }
 
-li {
-  color: white;
-}
-
 .list-cocktails {
   display: flex;
   flex-direction: row;
@@ -62,7 +58,7 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 60%;
+  width: 80%;
   align-items: center;
 }
 
@@ -86,7 +82,7 @@ nav {
   border-radius: 20px;
   box-shadow: 2px 2px 4px 2px rgb(15, 200, 240);
 }
-form {
+.form-boxed {
   background: rgba(0, 0, 0, 0.6);
   min-width:400px;
   max-width:600px;
