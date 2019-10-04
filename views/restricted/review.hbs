@@ -4,10 +4,10 @@
 <h2>Here you can comment the recipe</h2>
 <div class="show-coctails">
   <label for="">Title</label><br>
-  <input type="text" name="title" id="" value="{{listofRecipes.title}}"><br>
+  <input type="text" name="title" id="" value="{{cocktail.title}}"><br>
   <label for="">Comment:</label><br>
   <textarea name="description" id="" cols="30" rows="10"></textarea>
-  <form action="/recipes/{{listofRecipes._id}}/comment" method="POST">
+  <form action="/recipes/{{cocktail._id}}/comment" method="POST">
     <button type="submit">Save your comment</button>
   </form>
 </div>

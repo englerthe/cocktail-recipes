@@ -7,11 +7,7 @@ mongoose.connect(`mongodb://localhost/${dbName}`);
 const recipes = [
 {
   title: "Moscow Mule",
-<<<<<<< HEAD
-  rating: 'simple',
-=======
   rating: "simple",
->>>>>>> 9990a7e0f4cc9a53da2741ce4c9f12115b7118c7
   servings: 1,
   ingredients: [
   '4 cl Wodka', 
@@ -22,11 +18,7 @@ const recipes = [
 },
 {
   title: "Hugo",
-<<<<<<< HEAD
-  rating: 'simple',
-=======
   rating: "simple",
->>>>>>> 9990a7e0f4cc9a53da2741ce4c9f12115b7118c7
   servings: 1,
   ingredients: [
   '1 Glass Prosecco', 
@@ -41,11 +33,7 @@ const recipes = [
 },
 {
   title: "Swimmingpool",
-<<<<<<< HEAD
-  rating: 'regular',
-=======
   rating: "regular",
->>>>>>> 9990a7e0f4cc9a53da2741ce4c9f12115b7118c7
   servings: 1,
   ingredients: [
   '1 cl Rum', 
@@ -57,6 +45,196 @@ const recipes = [
   description: [
   'Die Zutaten zusammen mit einigen Eiswürfeln im Shaker schütteln.' 
   ]
+},
+{
+  title: "Zombie",
+  rating: "regular",
+  servings: 2,
+  ingredients: [
+  '4 cl Rum, braun',
+  '4 cl Rum, weiß',
+  '2 cl Cointreau',
+  '2 cl Maracujasirup',
+  '4 cl Ananassaft',
+  '4 cl Zitronensaft'
+  ],
+  description:['Alle Zutaten in den Shaker geben und kräftig shaken']
+},
+{
+  title: "Chilled Berry Cocktail",
+  rating: "regular",
+  servings: 2,
+  ingredients: [
+  '2 cl Wermut',
+  '10 cl Limonade (Wild Berry)',
+  'einige Beeren'  
+  ],
+  description:['Wermut und Limonade in ein Weinglas geben und mit etwas Eis und den gefrorenen Beeren auffüllen']
+},
+{
+  title: "Ipanema",
+  rating: "simple",
+  servings: 1,
+  ingredients: [
+  '1 Limette',
+  '1 EL Rohrzucker',
+  'etwas Ginger Ale',
+  'etwas Minze',
+  'etwas Limettensirup'
+  ],
+  description:['Die Limetten in kleine Stücke schneiden und mit dem Rohrzucker mischen. Danach etwas Minze, Sirup und Ginger Ale zugeben']
+},
+{
+  title: "Raffaello-Cocktail",
+  rating: "tough",
+  servings: 2,
+  ingredients: [
+  '4 cl Wodka',
+  '2 cl Malibu Coconut Rum',
+  '1 cl Kokossirup',
+  '1 cl Mandelsirup',
+  '5 cl Sahne',
+  '6 cl Kokosmilch'
+  ],
+  description:['Alle Zutaten in den Shaker geben und gut mixen.']
+},
+{
+  title: "Lava Flow Cocktail",
+  rating: "regular",
+  servings: 1,
+  ingredients: [
+  '25 ml weißer Rum',
+  '25 ml Malibu Coconut Rum',
+  '25 ml Kokosmilch',
+  '50 ml Ananassaft',
+  'etwas Eis'
+  ],
+  description:['Rum, Malibu, Kokosmilch und Ananassaft zusammen in einem Standmixer pürieren. ']
+},
+{
+  title: "Bacardi Razz-Cocktail",
+  rating: "simple",
+  servings: 1,
+  ingredients: [
+  '6 cl Rum',
+  '1 cl Himbeersirup',
+  '5 Himbeeren, gefroren',
+  'Sprite',
+  'etwas Eis'
+  ],
+  description:['Glas mit Eis füllen. Den Rum und Sirup dazugeben und mit Sprite auffüllen.']
+},
+{
+  title: "Sunset Cocktail",
+  rating: "simple",
+  servings: 1,
+  ingredients: [
+  '5 cl Mangosaft',
+  '10 cl Orangensaft',
+  '2 cl Zitronensaft',
+  '1 cl Sirup (Curacao blau)'
+  ],
+  description:['Alle Zutaten in der o. g. Reihenfolge in ein Cocktailglas geben.']
+},
+{
+  title: "Solero Cocktail",
+  rating: "simple",
+  servings: 1,
+  ingredients: [
+  '5 cl Maracujasaft',
+  '3 cl Orangensaft',
+  '1 TL Zitronensaft',
+  '1 TL Vanillesirup',
+  '1 cl Wodka'
+  ],
+  description:['Alle Zutaten miteinander mischen und in ein Glas füllen.']
+},
+{
+  title: "Cocktail Rubino",
+  rating: "simple",
+  servings: 1,
+  ingredients: [
+  '1 cl Grenadine',
+  '10 cl Traubensaft',
+  '10 cl Johannisbeersaft',
+  'Eiswürfel'
+  ],
+  description:['Zutaten in einem Cocktailshaker mischen.']
+},
+{
+  title: "Bier-Cocktail mit Sekt",
+  rating: "regular",
+  servings: 2,
+  ingredients: [
+  '3 Teile Bier',
+  '1 Teil Sekt',
+  '1 Schuss Erdbeersirup'
+  ],
+  description:['Bier einschenken. Vorsichtig mit Sekt auffüllen. Dann noch ein Schuss Sirup dazugeben.']
+},
+{
+  title: "Sunflower Cocktail",
+  rating: "simple",
+  servings: 1,
+  ingredients: [
+  '3 cl weißer Rum',
+  '3 cl Pfirsichsaft',
+  '3 cl Karamellsirup',
+  '2 cl Zitronensaft'
+  ],
+  description:['Zutaten in einen Shaker geben.']
+},
+{
+  title: "Beauty Cocktail",
+  rating: "simple",
+  servings: 3,
+  ingredients: [
+  '100 ml Buttermilch',
+  '100 ml Apfelsaft',
+  '50 ml Karottensaft',
+  '2 cl Zitronensaft'
+  ],
+  description:['Die gut gekühlten Getränke gut verrühren.']
+},
+{
+  title: "American Glory Cocktail",
+  rating: "simple",
+  servings: 3,
+  ingredients: [
+  '1 TL Limettensaft',
+  '3 TL Orangensaft',
+  '5 TL Grenadine',
+  '1 Scheibe Limette'
+  ],
+  description:['Alles gut mischen.']
+},
+{
+  title: "Jambo-Cocktail",
+  rating: "tough",
+  servings: 1,
+  ingredients: [
+  '4 cl weißer Rum',
+  '6 cl Orangensaft',
+  '6 cl Ananassaft',
+  '6 cl Maracujasaft',
+  '2 cl Grenadine'
+  ],
+  description:['Die Zutaten im Cocktailshaker mischen.']
+},
+{
+  title: "Minztee Cocktail",
+  rating: "regular",
+  servings: 4,
+  ingredients: [
+  '1 Liter Wasser',
+  '3 Beutel Pfefferminztee',
+  '100 g Zucker',
+  '100 ml Limettensaft',
+  '150 ml Maracujasaft',
+  '100 ml Mineralwasser',
+  '16 cl brauner Rum'
+  ],
+  description:['Tee kochen und Zucker dazugeben. Den Tee abkühlen lassen und die restlichen Zutaten dazugeben.']
 }
 ]
 

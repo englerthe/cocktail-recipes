@@ -146,21 +146,30 @@ router.post("/edit-recipes/:id/edit", (req, res, next) => {
     
   })
 
-  router.post("/comment/:id", (req, res, next) =>{
-    const reviews = req.body.reviews;
+  router.post("/comment/:id", (req, res, next) => {
     Recipes.findById(req.params.id)
-    .then(responseFromDB => {
-      Recipes.update({ _id: responseFromDB._id }, { $set: { reviews } })
-      .then(() => {
-      res.render("restricted/review", { Message: "The recipereview has been saved successfully!", condition })
-      //res.render("restricted/review", {comment: responseFromDB, condition})
-      })
+    .then(cocktail => {
+      res.render("restricted/review", {cocktail: cocktail, condition})
     })
-    .catch(error =>{
+    .catch(error => {
       next(error);
     })
   });
-    
+
+
+router.post("/recipes/:id/comment", (req, res, next) => {
+  const reviews = req.body.reviews;
+  Recipes.findById(req.params.id)
+  .then(responseFromDB => {
+    Recipes.updateOne({ _id: responseFromDB._id }, { $set: { reviews } })
+    .then (() => {
+      res.render("restricted/review", {Message: "The recipe review has been saved successfully!", condition})
+    })
+    .catch(error => {
+      next(error);
+    })
+  })
+})
  
     
 
