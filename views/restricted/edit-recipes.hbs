@@ -1,24 +1,24 @@
 <hr>
-  {{> navbar}}
+{{> navbar}}
 <hr>
 <h2>Here you can edit your recipe</h2>
+  <div class="form-boxed">
 <h3>Edit your recipe</h3>
 <form class="recipe-form" action="/edit-recipes/{{cocktail._id}}/edit" method="post">
-    <label for="">title</label>
-    <input type="text" name="title" id="" value="{{cocktail.title}}">
+  <label for="">Title</label><br>
+  <input type="text" name="title" id="" value="{{cocktail.title}}"><br>
 
-    <label for="">servings</label>
-    <input type="text" name="servings" id="" value="{{cocktail.servings}}">
+  <label for="">Servings</label><br>
+  <input type="text" name="servings" id="" value="{{cocktail.servings}}"><br>
 
-    <label for="">rating</label>
-    <input type="text" name="rating" id="" value="{{cocktail.rating}}">
+  <label for="">Rating</label><br>
+  <input type="text" name="rating" id="" value="{{cocktail.rating}}"><br>
 
-    <label for="">ingredients</label>
-    <textarea name="ingredients" id="" cols="30" rows="10">{{cocktail.ingredients}}</textarea>
+  <label for="">Ingredients</label><br>
+  <textarea name="ingredients" id="" cols="30" rows="10">{{cocktail.ingredients}}</textarea><br>
 
-    <label for="">Description</label>
-    <textarea name="description" id="" cols="30" rows="10"> {{cocktail.description}} </textarea>
-
-
-    <button type="submit">Save changes</button>
-  </form>
+  <label for="">Description</label><br>
+  <textarea name="description" id="" cols="30" rows="10"> {{cocktail.description}} </textarea><br>
+  <button type="submit">Save changes</button>
+</form>
+</div>

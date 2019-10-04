@@ -1,13 +1,11 @@
 <hr>
-  {{> navbar}}
+{{> navbar}}
 <hr>
 <h2>Here you can delete your recipe</h2>
-
-    <label for="">title</label>
-    <input type="text" name="title" id="" value="{{cocktail.title}}">
-      <form action="/recipes/{{cocktail._id}}/delete" method="POST">
-        <button type="submit">Delete</button>
-      </form>
-
-  
- 
+<div class="show-coctails">
+  <label for="">Title</label>
+  <input type="text" name="title" id="" value="{{cocktail.title}}">
+  <form action="/recipes/{{cocktail._id}}/delete" method="POST">
+    <button type="submit">Delete</button>
+  </form>
+</div>

@@ -66,13 +66,13 @@ nav {
   flex-direction: row;
   justify-content: flex-end; }
 
-#show-coctails {
+.show-coctails {
   background: rgba(0, 0, 0, 0.6);
   min-width: 400px;
   max-width: 400px;
   padding: 10px;
   margin: 10px 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 2px 2px 4px 2px #0fc8f0; }
 
 .form-boxed {
@@ -81,7 +81,7 @@ nav {
   max-width: 600px;
   padding: 10px;
   margin: 10px 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   box-shadow: 2px 2px 4px 2px #0fc8f0; }
 
 .recipe-form {
@@ -91,5 +91,44 @@ nav {
   display: flex;
   flex-direction: row;
   justify-content: flex-start; }
+
+textarea, input[type="text"], [type="number"], [type="password"], [type="email"], [type="url"] {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  box-shadow: 0 0 1px 0 #0fc8f0;
+  border-radius: 6px;
+  margin: 2px 0;
+  padding-left: 10px; }
+
+textarea:hover, input[type="text"]:hover, [type="number"]:hover, [type="password"]:hover, [type="email"]:hover, [type="url"]:hover {
+  background-color: rgba(31, 31, 31, 0.9); }
+
+textarea:hover, input[type="text"]:focus, [type="number"]:focus, [type="password"]:focus, [type="email"]:focus, [type="url"]:focus {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.9); }
+
+input[type="radio"] {
+  transform: scale(1.5);
+  margin: 2px 4px;
+  cursor: pointer; }
+
+button {
+  display: inline-block;
+  border-radius: 6px;
+  box-shadow: 0 0 1px 0 #0fc8f0;
+  padding: 1px 3px;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  font-family: 'Nunito', sans-serif; }
+
+button:hover {
+  background-color: rgba(31, 31, 31, 0.8); }
+
+button:focus {
+  outline: none; }
 
 /*# sourceMappingURL=style.css.map */

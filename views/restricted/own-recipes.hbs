@@ -1,19 +1,18 @@
 <hr>
-  {{> navbar}}
+{{> navbar}}
 <hr>
 <p>This recipes are posted by: <b> {{ recipes.0.owner.username }} </b></p>
-<div>
+<hr>
+<div class="list-cocktails">
       {{#each recipes}}
-<hr>
-<h3>Title:</h3>
-<p> {{ this.title }}</p>
-<hr>
-<form action="/edit/{{this.id}}/recipes" method="POST">
-<button type="submit">Edit your own Recipe</button></a>
-</form>
-<form action="/delete/{{this._id}}/recipes" method="POST">
-<button type="submit">Delete your Recipe</button>
-</form>
+      <div class="show-coctails">
+            <h3>Title: {{ this.title }}</h3>
+            <form action="/edit/{{this.id}}/recipes" method="POST">
+                  <button type="submit">Edit your own Recipe</button></a>
+            </form>
+            <form action="/delete/{{this._id}}/recipes" method="POST">
+                  <button type="submit">Delete your Recipe</button>
+            </form>
+      </div>
       {{/each}}
 </div>
-

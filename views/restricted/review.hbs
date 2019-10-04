@@ -1,11 +1,16 @@
 <hr>
-  {{> navbar}}
+{{> navbar}}
 <hr>
-<h1>Here you can comment the recipe</h1>
-   <label for="">title</label>
-    <input type="text" name="title" id="" value="{{listofRecipes.title}}"><br>
-    <label for="">Comment:</label>
-    <textarea name="description" id="" cols="30" rows="10"></textarea>
-      <form action="/recipes/{{listofRecipes._id}}/comment" method="POST">
-        <button type="submit">Save your comment</button>
-      </form>
+<h2>Here you can comment the recipe</h2>
+<div class="show-coctails">
+  <label for="">Title</label><br>
+  <input type="text" name="title" id="" value="{{listofRecipes.title}}"><br>
+  <label for="">Comment:</label><br>
+  <textarea name="description" id="" cols="30" rows="10"></textarea>
+  <form action="/recipes/{{listofRecipes._id}}/comment" method="POST">
+    <button type="submit">Save your comment</button>
+  </form>
+</div>
+{{#if Message }}
+    <p>{{ Message }}</p>
+  {{/if}}

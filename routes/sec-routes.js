@@ -147,9 +147,14 @@ router.post("/edit-recipes/:id/edit", (req, res, next) => {
   })
 
   router.post("/comment/:id", (req, res, next) =>{
+    const reviews = req.body.reviews;
     Recipes.findById(req.params.id)
     .then(responseFromDB => {
-      res.render("restricted/review", {comment: responseFromDB, condition})
+      Recipes.update({ _id: responseFromDB._id }, { $set: { reviews } })
+      .then(() => {
+      res.render("restricted/review", { Message: "The recipereview has been saved successfully!", condition })
+      //res.render("restricted/review", {comment: responseFromDB, condition})
+      })
     })
     .catch(error =>{
       next(error);

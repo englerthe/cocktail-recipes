@@ -1,21 +1,22 @@
 <hr>
-  {{> navbar}}
+{{> navbar}}
 <hr>
-<h2>Home</h2>
-{{#each listofFoundRecipes}}
-  <div id="show-coctails">
-  <h3>Cocktail: {{this.title}}</h3>
-  <ul>
-    <li>Rating: {{this.rating}}</li>
-    <li>Servings: {{this.servings}}</li>
-    <li>Incridents: {{this.ingredients}}</li>
-    <li>How to mix it: {{this.description}}</li>
-    <li>Creator: {{this.owner.username}}</li>
-    <li>Reviews: {{this.reviews}}</li>
-    <img src="{{this.imageUrl}}" alt="there should be an image here :-)" width="150px">
-  </ul>
+<div class="list-cocktails">
+  {{#each listofFoundRecipes}}
+  <div class="show-coctails">
+    <h3>Cocktail: {{this.title}}</h3>
+    <ul>
+      <li>Rating: {{this.rating}}</li>
+      <li>Servings: {{this.servings}}</li>
+      <li>Incridents: {{this.ingredients}}</li>
+      <li>How to mix it: {{this.description}}</li>
+      <li>Creator: {{this.owner.username}}</li>
+      <li>Reviews: {{this.reviews}}</li>
+      <img src="{{this.imageUrl}}" alt="there should be an image here :-)" width="150px">
+    </ul>
   </div>
-{{/each}}
+  {{/each}}
+</div>
 {{#if Message }}
-    <h2>{{ Message }}</h2>
+<h2>{{ Message }}</h2>
 {{/if}}
