@@ -1,8 +1,8 @@
 <hr>
 {{> navbar}}
 <hr>
+{{#if recipes}}
 <p>This recipes are posted by: <b> {{ recipes.0.owner.username }} </b></p>
-<hr>
 <div class="list-cocktails">
       {{#each recipes}}
       <div class="show-coctails">
@@ -16,3 +16,4 @@
       </div>
       {{/each}}
 </div>
+{{/if}}

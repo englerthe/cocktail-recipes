@@ -14,7 +14,7 @@ const recipes = [
   '2 cl Limettensaft', 
   '200 ml Ginger Ale', 
   '6 Scheiben Gurken'],
-  description: "Gurkenscheiben zuerst zerstoßen. Dazu gibt amn 4 cl Wodka und füllt das Ganze mit Ginger Ale auf"
+  description: ['Gurkenscheiben zuerst zerstoßen. Dazu gibt amn 4 cl Wodka und füllt das Ganze mit Ginger Ale auf']
 },
 {
   title: "Hugo",
@@ -27,8 +27,7 @@ const recipes = [
   'Holunderblütensirup, nach Belieben'
   ],
   description: [
-  'Den Saft der Limette in den Prosecco geben.' ,
-  'Minze und Holunderblütensirup nach Belieben zugeben.'
+  'Den Saft der Limette in den Prosecco geben. Minze und Holunderblütensirup nach Belieben zugeben.'
   ]
 },
 {

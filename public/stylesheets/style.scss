@@ -1,5 +1,6 @@
 html {
   background: url("/images/Drink-Menu-Background.jpg") no-repeat;
+  background-attachment: fixed;
   background-size: cover;
 }
 body {
@@ -52,6 +53,7 @@ ul {
   flex-direction: row;
   justify-content: start;
   flex-wrap: wrap;
+  align-items: flex-start;
 }
 
 nav {

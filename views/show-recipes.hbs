@@ -12,9 +12,9 @@
     <li>Incridents: {{this.ingredients}}</li>
     <li>How to mix it: {{this.description}}</li>
     <li>Creator: {{this.owner.username}}</li>
-    <li>Reviews: 
+    <li>Reviews:
       {{#each this.reviews}}
-        {{comment}}<br />
+        <p>- {{comment}}</p>
       {{/each}}
     </li>
     <img src="{{this.imageUrl}}" alt="there should be an image here :-)" width="150px">

@@ -38,7 +38,7 @@ router.post("/signup", (req, res, next) => {
       })
         .then(() => {
           req.session.currentUser = user; // combine user --> session 
-          res.redirect("/");
+          res.redirect("/login");
         })
         .catch(error => {
           next(error);
@@ -73,7 +73,7 @@ router.post("/login", (req, res, next) => {
       }
       if (bcrypt.compareSync(getPass, user.password)) { // if user exists, compare pw
         req.session.currentUser = user; // save session
-        res.redirect("/"); // if pw ok, then goto startpage
+        res.redirect("/my-recipes"); // if pw ok, then goto startpage
       } else { // if pw doesnt match
         res.render("auth/login", { // create error message in login page
           errorMessageLogin: "Incorrect password"
@@ -96,7 +96,6 @@ router.get("/logout", (req, res) => { //logout option
 router.get("/recipes", (req, res, next) => {
   Recipes.find().populate('owner').populate('reviews', 'comment')
     .then(listofRecipes => {
-      console.log(listofRecipes[0].reviews)
       res.render("show-recipes", { listofRecipes });
     })
     .catch(error => {
