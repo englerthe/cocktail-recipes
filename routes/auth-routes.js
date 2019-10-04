@@ -94,8 +94,9 @@ router.get("/logout", (req, res) => { //logout option
 });
 
 router.get("/recipes", (req, res, next) => {
-  Recipes.find().populate('owner')
+  Recipes.find().populate('owner').populate('reviews', 'comment')
     .then(listofRecipes => {
+      console.log(listofRecipes[0].reviews)
       res.render("show-recipes", { listofRecipes });
     })
     .catch(error => {

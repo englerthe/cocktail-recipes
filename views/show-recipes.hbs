@@ -12,7 +12,11 @@
     <li>Incridents: {{this.ingredients}}</li>
     <li>How to mix it: {{this.description}}</li>
     <li>Creator: {{this.owner.username}}</li>
-    <li>Reviews: {{this.reviews}}</li>
+    <li>Reviews: 
+      {{#each this.reviews}}
+        {{comment}}<br />
+      {{/each}}
+    </li>
     <img src="{{this.imageUrl}}" alt="there should be an image here :-)" width="150px">
 
     <form action="/comment/{{this._id}}" method="POST">

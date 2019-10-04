@@ -1,7 +1,38 @@
 const express = require("express");
 const router = express.Router();
 const Recipes = require("../models/recipes-model.js");
+const Reviews = require("../models/review-model.js");
 
+
+router.post('/recipes/:recipeId/comment', (req, res, next) => {
+  const newComment = {
+    user: req.session.currentUser._id,
+    comment: req.body.comment
+  }
+  Reviews.create(newComment)
+  .then(theNewComment => {
+    Recipes.findById(req.params.recipeId)
+
+    .then(foundRecipe => {
+      console.log(foundRecipe, theNewComment._id);
+      foundRecipe.reviews ? foundRecipe.reviews.push(theNewComment._id) : foundRecipe.reviews = [theNewComment._id];
+      foundRecipe.save()
+      .then(() => {
+        res.redirect('/recipes')
+      })
+      .catch(error => {
+        next(error);
+    })
+    .catch(error => {
+      next(error);
+  })
+  .catch(error => {
+    next(error);
+})
+})
+  }) 
+  });
+  
 router.get("/", (req, res, next) => {
   res.render("index");
 });
@@ -157,49 +188,7 @@ router.post("/edit-recipes/:id/edit", (req, res, next) => {
   });
 
 
-router.post("/recipes/:id/comment", (req, res, next) => {
-  const reviews = req.body.reviews;
-  Recipes.findById(req.params.id)
-  .then(responseFromDB => {
-    Recipes.updateOne({ _id: responseFromDB._id }, { $set: { reviews } })
-    .then (() => {
-      res.render("restricted/review", {Message: "The recipe review has been saved successfully!", condition})
-    })
-    .catch(error => {
-      next(error);
-    })
-  })
-})
- 
-    
 
-/*
-  router.post("/my-recipes/delete", (req, res, next) => {
-    const title = req.body.title;
-  
-    if (title === "") { //check if post values are not empty
-      res.render("restricted/add-recipes", {
-        Message: "Enter all necessary data."
-      });
-      return;
-    }
-    Recipes.findOne({ title: title })
-      .then(thisRecipes => {
-        if (req.session.currentUser._id.equals(thisRecipes.owner)) {
-          Recipes.findByIdAndDelete(thisRecipes._id)
-          .then(() => {
-            res.render("restricted/add-recipes", { Message: "The recipe " + title + " has been deleted successfully!" })
-          })
-          .catch(error => {
-            next(error);
-          })
-        } else {
-          res.render("restricted/add-recipes", { Message: "The recipe " + title + " has not been deleted!" })
-        }  // end if
-      })
-      .catch(error => {
-        next(error);
-      })
-  });
-*/
+ 
+
   module.exports = router;
